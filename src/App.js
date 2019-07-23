@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import GetMoney from './Compos/GetMoney';
+import ShowNotes from './Compos/ShowNotes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+	constructor(){
+		super();
+
+		this.state = {
+			amount: 7386
+		}
+	}
+
+	handleClick = (amount) => {
+		this.setState({
+			amount
+		});
+	}
+
+	render(){
+		const amount = this.state.amount;
+
+	    return ( 
+	    	<div className = "App" >
+	    		<header className="App-header"></header>
+	    		<div className="box">
+	    			<ul>
+	    				<li><GetMoney amount={amount} handleClick={this.handleClick} /></li>
+	    				<li><ShowNotes amount={amount} /></li>
+	    			</ul>
+	    		</div>
+	        </div>
+	    );
+    }
 }
 
 export default App;
